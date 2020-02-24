@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import SearchResults from "./SearchResults";
 import SearchForm from "./SearchForm";
 
-const DataFetch = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+const WeatherAppContainer = () => {
+  const [fetchState, setFetchState] = useState(null);
   const [weatherData, setWeatherData] = useState({
     country: "",
     city: "",
     temperature: "",
     main: "",
     description: "",
-    icon: false
+    icon: ""
   });
 
   const fetchWeatherData = userQuery => {
     const API_KEY = process.env.REACT_APP_API_KEY;
-    setLoading(true);
+    setFetchState("LOADING");
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${userQuery}&units=metric&appid=${API_KEY}`
     )
@@ -30,24 +29,19 @@ const DataFetch = () => {
           description: data.weather[0].description,
           icon: data.weather[0].icon
         });
-        setLoading(false);
+        setFetchState(null);
       })
-      .catch(error => {
-        setError(error);
-        setLoading(false);
+      .catch(() => {
+        setFetchState("ERROR");
       });
   };
 
   return (
-    <div>
-      <SearchForm fetchWeatherData={fetchWeatherData} />
-      <SearchResults
-        weatherData={weatherData}
-        loading={loading}
-        error={error}
-      />
-    </div>
+    <Fragment>
+      <SearchForm onSubmit={fetchWeatherData} />
+      <SearchResults weatherData={weatherData} fetchState={fetchState} />
+    </Fragment>
   );
 };
 
-export default DataFetch;
+export default WeatherAppContainer;

@@ -1,12 +1,11 @@
 import React from "react";
-import "./App.css";
-import DataFetch from "./DataFetch";
+import WeatherAppContainer from "./WeatherAppContainer";
 
 const App = () => {
   return (
     <div>
       <h1>Weather App</h1>
-      <DataFetch />
+      <WeatherAppContainer />
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 
-const Search = ({ fetchWeatherData }) => {
+const Search = ({ onSubmit }) => {
   const [userQuery, setUserQuery] = useState("");
 
   const handleChange = event => {
@@ -9,12 +9,11 @@ const Search = ({ fetchWeatherData }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    fetchWeatherData(userQuery);
-    setUserQuery("");
+    onSubmit(userQuery);
   };
 
   return (
-    <div>
+    <Fragment>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -25,7 +24,7 @@ const Search = ({ fetchWeatherData }) => {
         />
         <input type="submit" value="Search" />
       </form>
-    </div>
+    </Fragment>
   );
 };
 
