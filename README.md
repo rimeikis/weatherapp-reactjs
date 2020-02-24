@@ -1,3 +1,8 @@
+How to use:
+1. Rename the .env_sample file into .env
+2. Replace the REACT_APP_API_KEY value to your API key
+3. Follow instructions below for installing packages etc.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
