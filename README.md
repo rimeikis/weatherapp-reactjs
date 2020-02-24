@@ -9,6 +9,6 @@ Update 1 (24/02/2020):
 
 1. Combined loading and error states into one state.
 2. Renamed components, props, functions and variables accordingly.
-3. Replaced all divs to fragments. This is due to no styling and the focus is on maximizing performance
+3. Replaced all divs to fragments. This is due to no styling and the focus being on maximizing app performance
 4. Extracted functions out of JSX and optimized them
 5. Used .env to store new api key as environment variable
