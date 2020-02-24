@@ -1,22 +1,14 @@
-### `npm start`
+How to use:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Rename the .env_sample file into .env
+2. Replace the REACT_APP_API_KEY value to your API key from OpenWeatherMap
+3. cd to folder and run "npm install" to install dependencies
+4. run "npm start" to start the application
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Update 1 (24/02/2020):
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Combined loading and error states into one state.
+2. Renamed components, props, functions and variables accordingly.
+3. Replaced all divs to fragments. This is due to no styling and the focus is on maximizing performance
+4. Extracted functions out of JSX and optimized them
+5. Used .env to store new api key as environment variable
