@@ -1,13 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 const Form = ({ weatherData, loading, error }) => {
   return (
-    <div>
-      {error ? (
-        "There has been an error!"
-      ) : loading ? (
-        "Loading weather data..."
-      ) : (
+    <Fragment>
+      {error && "There has been an error!"}
+      {loading && "Loading weather data..."}
+      {weatherData && (
         <div>
           <h3>{weatherData.city}</h3>
           <h3>{weatherData.country}</h3>
@@ -20,7 +18,7 @@ const Form = ({ weatherData, loading, error }) => {
           />
         </div>
       )}
-    </div>
+    </Fragment>
   );
 };
 

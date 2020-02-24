@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import API_KEY from "./APIKEY";
 import SearchResults from "./SearchResults";
 import SearchForm from "./SearchForm";
 
@@ -12,10 +11,11 @@ const DataFetch = () => {
     temperature: "",
     main: "",
     description: "",
-    icon: ""
+    icon: false
   });
 
   const fetchWeatherData = userQuery => {
+    const API_KEY = process.env.REACT_APP_API_KEY;
     setLoading(true);
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${userQuery}&units=metric&appid=${API_KEY}`
@@ -34,6 +34,7 @@ const DataFetch = () => {
       })
       .catch(error => {
         setError(error);
+        setLoading(false);
       });
   };
 
