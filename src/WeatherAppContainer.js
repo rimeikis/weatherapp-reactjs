@@ -8,7 +8,6 @@ const WeatherAppContainer = () => {
     country: "",
     city: "",
     temperature: "",
-    main: "",
     description: "",
     icon: ""
   });
@@ -25,7 +24,6 @@ const WeatherAppContainer = () => {
           country: data.sys.country,
           city: data.name,
           temperature: data.main.temp,
-          main: data.weather[0].main,
           description: data.weather[0].description,
           icon: data.weather[0].icon
         });

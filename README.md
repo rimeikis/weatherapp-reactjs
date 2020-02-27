@@ -12,3 +12,7 @@ Update 1 (24/02/2020):
 3. Replaced all divs to fragments. This is due to no styling and the focus being on maximizing app performance
 4. Extracted functions out of JSX and optimized them
 5. Used .env to store new api key as environment variable
+
+Update 2 (27/02/2020):
+
+1. Styling using Material-UI.

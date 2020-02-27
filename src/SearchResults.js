@@ -1,28 +1,18 @@
-import React, { Fragment } from "react";
+import React from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
-const Form = ({ weatherData, fetchState }) => {
+const SearchResults = ({ weatherData, fetchState }) => {
   const showText = () => {
     if (fetchState === "ERROR") {
-      return "There has been an error!";
+      return "City not found!";
     } else if (fetchState === "LOADING") {
-      return "Loading weather data...";
+      return <CircularProgress />;
     } else {
       return null;
     }
-  };
-
-  const showData = () => {
-    return (
-      weatherData && (
-        <Fragment>
-          {weatherData.city}
-          {weatherData.country}
-          {weatherData.temperature}
-          {weatherData.main}
-          {weatherData.description}
-        </Fragment>
-      )
-    );
   };
 
   const showIcon = () => {
@@ -37,12 +27,42 @@ const Form = ({ weatherData, fetchState }) => {
   };
 
   return (
-    <Fragment>
-      {showText()}
-      {showData()}
-      {showIcon()}
-    </Fragment>
+    <Grid
+      textAlign="center"
+      container
+      direction="column"
+      justify="center"
+      alignItems="center"
+    >
+      <Box color="secondary.main">
+        <Grid>
+          <Typography variant="h6">{showText()}</Typography>
+        </Grid>
+      </Box>
+
+      <Grid>
+        <Typography variant="h1">
+          {weatherData.temperature &&
+            `${Math.floor(weatherData.temperature)}°C`}
+        </Typography>
+      </Grid>
+
+      <Grid>
+        <Typography variant="h6">
+          {weatherData.city && `${weatherData.city}, ${weatherData.country}`}
+        </Typography>
+      </Grid>
+
+      <Grid>{showIcon()}</Grid>
+
+      <Grid>
+        <Typography variant="h5">
+          {weatherData.description.charAt(0).toUpperCase() +
+            weatherData.description.slice(1)}
+        </Typography>
+      </Grid>
+    </Grid>
   );
 };
 
-export default Form;
+export default SearchResults;
